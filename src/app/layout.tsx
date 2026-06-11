@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 import { SmoothScroll } from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "Aether | Premium Portfolio",
-  description: "A cinematic storytelling portfolio experience built with Next.js 15, GSAP, and Framer Motion.",
+  title: "Krishna | Portfolio",
+  description: "A storytelling portfolio experience built with Next.js 15, GSAP, and Framer Motion.",
 };
 
 export default function RootLayout({

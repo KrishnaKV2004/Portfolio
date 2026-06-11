@@ -41,7 +41,7 @@ export function Contact() {
                   <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-accent/50 transition-colors">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="font-medium">hello@aether.com</span>
+                  <span className="font-medium">krishnaverma.0227@gmail.com</span>
                 </a>
                 <div className="flex gap-4">
                   <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:border-accent transition-colors">
