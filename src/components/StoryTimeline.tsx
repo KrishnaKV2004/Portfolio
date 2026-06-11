@@ -18,11 +18,12 @@ const timeline = [
   },
   {
     tag: "The Vision",
-    title: "Engineering Founder",
-    description: "Bridging the gap between code and business, founding products that scale from zero to millions.",
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=2670"
+    title: "Systems Thinker",
+    description: "Bridging the gap between code and design, focusing on building modular, scalable, and human-centric software.",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2670"
   }
 ];
+
 
 export function StoryTimeline() {
   return (

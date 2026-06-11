@@ -13,10 +13,23 @@ export function Hero() {
   const subTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current || !textRef.current) return;
+    if (!containerRef.current || !textRef.current || !subTextRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(textRef.current, 
+      // Entrance Animation
+      const tl = gsap.timeline();
+      tl.fromTo(textRef.current, 
+        { y: 50, opacity: 0, scale: 0.95 }, 
+        { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" }
+      )
+      .fromTo(subTextRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: "expo.out" },
+        "-=1"
+      );
+
+      // Scroll Animations
+      gsap.fromTo(textRef.current,
         { scale: 1, opacity: 1 },
         {
           scale: 1.1,
@@ -30,11 +43,9 @@ export function Hero() {
         }
       );
 
-
-      gsap.fromTo(subTextRef.current, 
-        { y: 0, opacity: 1 },
+      gsap.fromTo(subTextRef.current,
+        { opacity: 1 },
         {
-          y: -50,
           opacity: 0,
           scrollTrigger: {
             trigger: containerRef.current,
@@ -44,7 +55,6 @@ export function Hero() {
           },
         }
       );
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -60,32 +70,26 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 flex flex-col items-center text-center px-4">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.8, ease: "easeOut" }}
-           className="mb-4"
+        <div 
+          ref={statusRef}
+          className="mb-8 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md flex items-center gap-2 group hover:bg-accent/10 transition-colors cursor-default"
         >
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-xs md:text-sm">
-            Portfolio © 2026
+          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+          <span className="text-accent font-bold tracking-widest uppercase text-[10px]">
+            Available for new projects
           </span>
-        </motion.div>
+        </div>
 
-        <motion.h1
+
+        <h1
           ref={textRef}
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-7xl md:text-[14vw] font-bold tracking-tight leading-none text-white select-none text-balance"
         >
           KRISHNA
-        </motion.h1>
+        </h1>
 
-        <motion.div
+        <div
           ref={subTextRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 flex flex-col items-center"
         >
           <p className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight max-w-2xl text-balance">
@@ -94,9 +98,10 @@ export function Hero() {
           <div className="mt-16">
             <div className="w-[1px] h-20 bg-gradient-to-b from-accent to-transparent" />
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
 

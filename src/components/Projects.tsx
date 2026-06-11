@@ -55,12 +55,13 @@ const projects = [
     tagline: "Quantum Computing Interface",
     description: "Simplifying the complexity of quantum programming with a visual, intuitive interface.",
     color: "bg-emerald-600",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=2670",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2670",
     features: ["Q-Gate Visualizer", "Simulated Runtime", "Hybrid Cloud"],
     github: "#",
     link: "#"
   }
 ];
+
 
 
 export function Projects() {
