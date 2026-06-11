@@ -146,21 +146,17 @@ export function Projects() {
               ))}
             </div>
 
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center">
               <a 
-                href={project.github} 
-                className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all"
-              >
-                <Terminal className="w-5 h-5" /> GitHub
-
-              </a>
-              <a 
-                href={project.link} 
+                href="https://github.com/KrishnaKV2004" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-all"
               >
-                View Project <ExternalLink className="w-5 h-5" />
+                <Terminal className="w-5 h-5" /> View on GitHub
               </a>
             </div>
+
           </div>
         </section>
       ))}
