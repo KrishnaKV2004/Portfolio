@@ -11,6 +11,8 @@ export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const subTextRef = useRef<HTMLDivElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     if (!containerRef.current || !textRef.current || !subTextRef.current) return;
@@ -18,10 +20,16 @@ export function Hero() {
     const ctx = gsap.context(() => {
       // Entrance Animation
       const tl = gsap.timeline();
-      tl.fromTo(textRef.current, 
-        { y: 50, opacity: 0, scale: 0.95 }, 
-        { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" }
+      tl.fromTo(statusRef.current,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
       )
+      .fromTo(textRef.current, 
+        { y: 50, opacity: 0, scale: 0.95 }, 
+        { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" },
+        "-=0.5"
+      )
+
       .fromTo(subTextRef.current,
         { y: 20, opacity: 0 },
         { y: 0, opacity: 1, duration: 1, ease: "expo.out" },
