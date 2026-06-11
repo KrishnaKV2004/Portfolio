@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { StoryTimeline } from "@/components/StoryTimeline";
 import { Expertise } from "@/components/Expertise";
 import { Projects } from "@/components/Projects";
+import { Resume } from "@/components/Resume";
 import { Certifications } from "@/components/Certifications";
 import { Stats } from "@/components/Stats";
 import { Contact } from "@/components/Contact";
@@ -12,10 +13,13 @@ export default function Home() {
       <Hero />
       <StoryTimeline />
       <Expertise />
+      <Resume />
       <Projects />
       <Certifications />
       <Stats />
       <Contact />
+
     </main>
   );
 }
+
