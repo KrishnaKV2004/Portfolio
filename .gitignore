@@ -24,8 +24,6 @@
 .DS_Store
 *.pem
 
-Requirements.txt
-
 AGENTS.md
 CLAUDE.md
 

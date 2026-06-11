@@ -16,18 +16,20 @@ export function Hero() {
     if (!containerRef.current || !textRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.to(textRef.current, {
-        scale: 1.1,
-        opacity: 0.2,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      gsap.fromTo(textRef.current, 
+        { scale: 1, opacity: 1 },
+        {
+          scale: 1.1,
+          opacity: 0.2,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+
 
       gsap.to(subTextRef.current, {
         y: -50,

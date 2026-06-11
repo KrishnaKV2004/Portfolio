@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Terminal, ExternalLink } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +16,9 @@ const projects = [
     description: "A centralized workspace for modern engineering teams. Real-time, distributed, and incredibly fast.",
     color: "bg-blue-600",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426",
-    features: ["Real-time Sync", "Edge Computing", "AI-First AI"]
+    features: ["Real-time Sync", "Edge Computing", "AI-First AI"],
+    github: "#",
+    link: "#"
   },
   {
     title: "Lumina",
@@ -22,7 +26,9 @@ const projects = [
     description: "An AI-native design tool that understands context, intent, and aesthetic principles.",
     color: "bg-purple-600",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2564",
-    features: ["Context Awareness", "Generative Layouts", "System Sync"]
+    features: ["Context Awareness", "Generative Layouts", "System Sync"],
+    github: "#",
+    link: "#"
   },
   {
     title: "Aether",
@@ -30,7 +36,9 @@ const projects = [
     description: "Next-generation cloud infrastructure built for the decentralized web of tomorrow.",
     color: "bg-cyan-600",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2672",
-    features: ["Zero-Trust", "Global Mesh", "Auto-Healing"]
+    features: ["Zero-Trust", "Global Mesh", "Auto-Healing"],
+    github: "#",
+    link: "#"
   }
 ];
 
@@ -101,19 +109,35 @@ export function Projects() {
             <span className="text-accent font-bold tracking-widest uppercase text-sm mb-4 block">
               {project.tagline}
             </span>
-            <h3 className="text-7xl md:text-9xl font-bold tracking-tighter text-white mb-8">
+            <h3 className="text-7xl md:text-[10vw] font-bold tracking-tighter text-white mb-8">
               {project.title}
             </h3>
             <p className="text-xl md:text-3xl text-gray-400 max-w-3xl mx-auto leading-tight mb-12 text-balance">
               {project.description}
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
               {project.features.map((feature, i) => (
                 <span key={i} className="px-6 py-2 rounded-full border border-white/10 text-sm text-white font-medium bg-white/5 backdrop-blur-sm">
                   {feature}
                 </span>
               ))}
+            </div>
+
+            <div className="flex justify-center gap-6">
+              <a 
+                href={project.github} 
+                className="flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all"
+              >
+                <Terminal className="w-5 h-5" /> GitHub
+
+              </a>
+              <a 
+                href={project.link} 
+                className="flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-all"
+              >
+                View Project <ExternalLink className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </section>
