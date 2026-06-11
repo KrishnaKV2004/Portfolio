@@ -15,24 +15,26 @@ export function Hero() {
 
 
   useEffect(() => {
-    if (!containerRef.current || !textRef.current || !subTextRef.current) return;
+    if (!containerRef.current || !textRef.current || !subTextRef.current || !statusRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Entrance Animation
+      // Ensure clean start state
+      gsap.set([statusRef.current, textRef.current, subTextRef.current], { 
+        opacity: 0,
+        visibility: "visible" 
+      });
+
+      // Entrance Animation - No Y shifts to prevent jitter
       const tl = gsap.timeline();
-      tl.fromTo(statusRef.current,
-        { opacity: 0, y: -10 },
-        { opacity: 1, y: 0, duration: 1, ease: "power2.out" }
+      tl.to(statusRef.current,
+        { opacity: 1, duration: 1, ease: "power2.out" }
       )
-      .fromTo(textRef.current, 
-        { y: 50, opacity: 0, scale: 0.95 }, 
-        { y: 0, opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" },
+      .to(textRef.current, 
+        { opacity: 1, scale: 1, duration: 1.5, ease: "expo.out" },
         "-=0.5"
       )
-
-      .fromTo(subTextRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "expo.out" },
+      .to(subTextRef.current,
+        { opacity: 1, duration: 1, ease: "expo.out" },
         "-=1"
       );
 
@@ -80,7 +82,7 @@ export function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         <div 
           ref={statusRef}
-          className="mb-8 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md flex items-center gap-2 group hover:bg-accent/10 transition-colors cursor-default"
+          className="mb-8 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 backdrop-blur-md flex items-center gap-2 group hover:bg-accent/10 transition-colors cursor-default opacity-0 invisible"
         >
           <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
           <span className="text-accent font-bold tracking-widest uppercase text-[10px]">
@@ -88,17 +90,16 @@ export function Hero() {
           </span>
         </div>
 
-
         <h1
           ref={textRef}
-          className="text-7xl md:text-[14vw] font-bold tracking-tight leading-none text-white select-none text-balance"
+          className="text-7xl md:text-[14vw] font-bold tracking-tight leading-none text-white select-none text-balance opacity-0 invisible"
         >
           KRISHNA
         </h1>
 
         <div
           ref={subTextRef}
-          className="mt-8 flex flex-col items-center"
+          className="mt-8 flex flex-col items-center opacity-0 invisible"
         >
           <p className="text-lg md:text-2xl text-gray-400 font-medium tracking-tight max-w-2xl text-balance">
             Systems Architect & Software Engineer building the next generation of digital products.
@@ -111,5 +112,6 @@ export function Hero() {
     </section>
   );
 }
+
 
 
