@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "lenis/dist/lenis.css";
 
-
 :root {
   --background: #000000;
   --foreground: #F5F5F5;
@@ -23,9 +22,19 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased selection:bg-accent/30 selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-accent/30 selection:text-white overflow-x-hidden;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
     background-color: #000000;
+  }
+
+  /* Hide scrollbars */
+  * {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -51,26 +60,8 @@
   }
 }
 
-/* Custom Scrollbar for premium feel */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #444444;
-}
-
 /* Lenis CSS */
-html.lenis {
+html.lenis, html.lenis body {
   height: auto;
 }
 
@@ -89,4 +80,5 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
 

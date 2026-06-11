@@ -78,7 +78,7 @@ export function Contact() {
         </motion.div>
 
         <footer className="mt-24 pt-12 border-t border-white/5 w-full flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm gap-4">
-          <p>© 2026 AETHER. All rights reserved.</p>
+          <p>© 2026 Krishna All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
