@@ -39,8 +39,29 @@ const projects = [
     features: ["Zero-Trust", "Global Mesh", "Auto-Healing"],
     github: "#",
     link: "#"
+  },
+  {
+    title: "Nova",
+    tagline: "Visual Storytelling",
+    description: "A digital canvas for high-end photography and cinematic content production pipelines.",
+    color: "bg-orange-600",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2671",
+    features: ["Asset Management", "Workflow Engine", "4K Ready"],
+    github: "#",
+    link: "#"
+  },
+  {
+    title: "Zenith",
+    tagline: "Quantum Computing Interface",
+    description: "Simplifying the complexity of quantum programming with a visual, intuitive interface.",
+    color: "bg-emerald-600",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=2670",
+    features: ["Q-Gate Visualizer", "Simulated Runtime", "Hybrid Cloud"],
+    github: "#",
+    link: "#"
   }
 ];
+
 
 export function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);

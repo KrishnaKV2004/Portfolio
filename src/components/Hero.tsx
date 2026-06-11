@@ -31,18 +31,20 @@ export function Hero() {
       );
 
 
-      gsap.to(subTextRef.current, {
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "50% top",
-          scrub: true,
-        },
-      });
+      gsap.fromTo(subTextRef.current, 
+        { y: 0, opacity: 1 },
+        {
+          y: -50,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "50% top",
+            scrub: true,
+          },
+        }
+      );
+
     }, containerRef);
 
     return () => ctx.revert();
