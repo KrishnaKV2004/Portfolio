@@ -33,16 +33,17 @@ export function Resume() {
             <p className="text-xl md:text-2xl text-gray-400 leading-relaxed mb-12 max-w-xl">
               Exploring the intersection of technical architecture and product strategy through a decade of engineering excellence.
             </p>
-            
+
             <div className="flex flex-wrap gap-6">
-              <button 
+              <button
                 onClick={scrollToContact}
-                className="flex items-center gap-3 px-10 py-5 rounded-full bg-accent text-white font-bold hover:bg-blue-600 transition-all shadow-lg shadow-accent/20"
+                className="flex items-center gap-3 px-10 py-5 rounded-full bg-accent text-white font-bold hover:opacity-90 transition-all shadow-lg shadow-accent/20"
               >
                 Hire Me <Send className="w-5 h-5" />
               </button>
-              <a 
-                href="#" 
+              <a
+                href="/resume.pdf"
+                download
                 className="flex items-center gap-3 px-10 py-5 rounded-full border border-white/10 text-white font-bold hover:bg-white/5 transition-all"
               >
                 Download PDF <Download className="w-5 h-5" />
@@ -51,43 +52,40 @@ export function Resume() {
           </motion.div>
 
           <motion.div
-             initial={{ opacity: 0, scale: 0.9, rotateY: 20 }}
-             whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-             className="relative"
+            initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
+            whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
-            <div className="relative aspect-[3/4] max-w-md mx-auto bg-[#111] rounded-[2rem] border border-white/5 p-8 shadow-2xl overflow-hidden group">
-              {/* Artistic Resume Mockup */}
-              <div className="space-y-6 opacity-40 group-hover:opacity-60 transition-opacity duration-700">
-                <div className="w-24 h-3 bg-accent/40 rounded-full" />
-                <div className="space-y-3">
-                  <div className="w-full h-2 bg-white/5 rounded-full" />
-                  <div className="w-full h-2 bg-white/5 rounded-full" />
-                  <div className="w-3/4 h-2 bg-white/5 rounded-full" />
-                </div>
-                <div className="pt-8 space-y-4">
-                   <div className="w-32 h-2.5 bg-white/10 rounded-full" />
-                   <div className="grid grid-cols-2 gap-4">
-                      <div className="h-20 bg-white/5 rounded-2xl" />
-                      <div className="h-20 bg-white/5 rounded-2xl" />
-                   </div>
-                </div>
-                <div className="pt-8 space-y-3">
-                  <div className="w-full h-2 bg-white/5 rounded-full" />
-                  <div className="w-5/6 h-2 bg-white/5 rounded-full" />
+            {/* Window Container */}
+            <div className="relative aspect-[3.2/4] max-w-md mx-auto bg-[#1a1a1a] rounded-[1.5rem] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden group">
+              {/* Mac-style Header */}
+              <div className="h-8 bg-[#252525] border-b border-white/5 flex items-center px-4 gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                <div className="flex-1 text-center pr-12">
+                  <span className="text-[10px] text-gray-500 font-medium tracking-widest uppercase">Resume</span>
                 </div>
               </div>
 
-              {/* Reveal Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-500">
-                  <FileText className="w-8 h-8" />
-                </div>
+              {/* PDF Preview Window */}
+              <div className="relative w-full h-[calc(100%-2rem)] bg-white overflow-hidden">
+                <iframe
+                  src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                  className="w-full h-full border-none opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+                  title="Resume Preview"
+                />
+                {/* Subtle glass effect on top of frame to make it feel integrated */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/5 via-transparent to-transparent" />
               </div>
 
-              <div className="absolute inset-0 border-[1px] border-white/10 rounded-[2rem] pointer-events-none" />
+              {/* Shine effect on the whole window */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/5 to-transparent" />
             </div>
+
+
           </motion.div>
         </div>
       </div>
