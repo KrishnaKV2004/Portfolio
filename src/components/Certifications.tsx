@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Award, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Award, CheckCircle2, X } from "lucide-react";
 
 const certifications = [
   {
@@ -43,8 +44,10 @@ const certifications = [
 ];
 
 export function Certifications() {
+  const [selectedCert, setSelectedCert] = useState<typeof certifications[0] | null>(null);
+
   return (
-    <section className="bg-black py-48 px-6 md:px-12">
+    <section className="bg-black py-48 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <div>
@@ -60,11 +63,9 @@ export function Certifications() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
-            <motion.a
+            <motion.div
               key={index}
-              href={cert.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setSelectedCert(cert)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -87,10 +88,61 @@ export function Certifications() {
               <div className="mt-8 text-xs font-bold uppercase tracking-widest text-accent opacity-0 group-hover:opacity-100 transition-opacity">
                 View Certificate →
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Mac Window Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedCert(null)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] cursor-zoom-out"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="fixed inset-6 md:inset-20 z-[101] flex items-center justify-center pointer-events-none"
+            >
+              <div className="bg-[#1a1a1a] w-full h-full max-w-5xl rounded-[1.5rem] border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col pointer-events-auto">
+                {/* Mac Header */}
+                <div className="h-12 bg-[#252525] border-b border-white/5 flex items-center px-6 gap-2 shrink-0">
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={() => setSelectedCert(null)}
+                      className="w-3 h-3 rounded-full bg-[#ff5f56] hover:brightness-75 transition-all flex items-center justify-center group"
+                    >
+                      <X className="w-2 h-2 text-black/40 opacity-0 group-hover:opacity-100" />
+                    </button>
+                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                    <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                  </div>
+                  <div className="flex-1 text-center pr-12">
+                    <span className="text-[11px] text-gray-400 font-bold tracking-widest uppercase">
+                      {selectedCert.title} - {selectedCert.issuer}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 bg-white relative">
+                  <iframe
+                    src={`${selectedCert.link}#toolbar=0`}
+                    className="w-full h-full border-none"
+                    title={selectedCert.title}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
