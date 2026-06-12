@@ -31,7 +31,7 @@ export function Resume() {
               Resume.
             </h2>
             <p className="text-xl md:text-2xl text-gray-400 leading-relaxed mb-12 max-w-xl">
-              Exploring the intersection of technical architecture and product strategy through a decade of engineering excellence.
+              Exploring the intersection of technical architecture and product strategy through years of engineering excellence.
             </p>
 
             <div className="flex flex-wrap gap-6">

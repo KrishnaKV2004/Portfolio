@@ -5,28 +5,40 @@ import { Award, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const certifications = [
   {
-    title: "AWS Solutions Architect",
+    title: "AWS Certified",
     issuer: "Amazon Web Services",
     date: "2024",
-    link: "#"
+    link: "/AWS.pdf"
   },
   {
-    title: "TensorFlow Developer",
-    issuer: "Google",
-    date: "2023",
-    link: "#"
+    title: "Git Certification",
+    issuer: "CodeSignal",
+    date: "2024",
+    link: "/CodeSignal Git.pdf"
   },
   {
-    title: "Professional Scrum Master",
-    issuer: "Scrum.org",
-    date: "2023",
-    link: "#"
+    title: "Microsoft Azure",
+    issuer: "Microsoft",
+    date: "2024",
+    link: "/MS Azure.pdf"
   },
   {
-    title: "Certified Kubernetes Admin",
-    issuer: "CNCF",
-    date: "2025",
-    link: "#"
+    title: "Microsoft Power BI",
+    issuer: "Microsoft",
+    date: "2024",
+    link: "/Microsoft Power BI.pdf"
+  },
+  {
+    title: "Full Stack Development",
+    issuer: "Industry Standard",
+    date: "2024",
+    link: "/Full Stack.pdf"
+  },
+  {
+    title: "Machine Learning",
+    issuer: "Advanced AI",
+    date: "2024",
+    link: "/ML.pdf"
   }
 ];
 
@@ -46,15 +58,18 @@ export function Certifications() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-[#151515] border border-white/5 p-8 rounded-3xl hover:bg-white/5 transition-all duration-500"
+              className="group relative bg-[#151515] border border-white/5 p-8 rounded-3xl hover:bg-white/5 transition-all duration-500 block cursor-pointer"
             >
               <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                 <Award className="w-6 h-6 text-accent" />
@@ -68,7 +83,11 @@ export function Certifications() {
               <div className="absolute top-8 right-8">
                 <CheckCircle2 className="w-5 h-5 text-gray-800" />
               </div>
-            </motion.div>
+
+              <div className="mt-8 text-xs font-bold uppercase tracking-widest text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                View Certificate →
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>
